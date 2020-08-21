@@ -59,6 +59,8 @@ inputs:
 
     is_required: false
     is_expand: true
+- pr_owner:
+- pr_repository:
 - is_debug: "false"
   opts:
     title: Print all executed shell commands to a build log?
