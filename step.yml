@@ -63,12 +63,12 @@ inputs:
 - pr_repository:
 - pr_scanner_properties: |-
     {{ if .IsPR }}
-    sonar.pullrequest.base=$BITRISEIO_PULL_REQUEST_HEAD_BRANCH
-    sonar.pullrequest.branch=$BITRISEIO_PULL_REQUEST_MERGE_BRANCH
+    sonar.pullrequest.base=$BITRISEIO_GIT_BRANCH_DEST
+    sonar.pullrequest.branch=$BITRISE_GIT_BRANCH
     sonar.pullrequest.key=$BITRISE_PULL_REQUEST
     sonar.pullrequest.provider=bitbucketcloud
-    sonar.pullrequest.bitbucketcloud.repository=$pr_owner
-    sonar.pullrequest.bitbucketcloud.owner=pr_$repository
+    sonar.pullrequest.bitbucketcloud.repository=$pr_repository
+    sonar.pullrequest.bitbucketcloud.owner=$pr_owner
     {{ end }}
   opts:
     is_template: true
