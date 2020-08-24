@@ -61,18 +61,18 @@ inputs:
     is_expand: true
 - pr_owner:
 - pr_repository:
-- pr_scanner_properties:
-  - content: |-
+- pr_scanner_properties: |-
     {{ if .IsPR }}
-    sonar.pullrequest.base={{$BITRISEIO_PULL_REQUEST_HEAD_BRANCH}}
-    sonar.pullrequest.branch={{$BITRISEIO_PULL_REQUEST_MERGE_BRANCH}}
-    sonar.pullrequest.key={{$BITRISE_PULL_REQUEST}}
+    sonar.pullrequest.base=$BITRISEIO_PULL_REQUEST_HEAD_BRANCH
+    sonar.pullrequest.branch=$BITRISEIO_PULL_REQUEST_MERGE_BRANCH
+    sonar.pullrequest.key=$BITRISE_PULL_REQUEST
     sonar.pullrequest.provider=bitbucketcloud
-    sonar.pullrequest.bitbucketcloud.repository={{$pr_owner}}
-    sonar.pullrequest.bitbucketcloud.owner=pr_{{$repository}}
+    sonar.pullrequest.bitbucketcloud.repository=$pr_owner
+    sonar.pullrequest.bitbucketcloud.owner=pr_$repository
     {{ end }}
   opts:
     is_template: true
+    is_expand: true
 - is_debug: "false"
   opts:
     title: Print all executed shell commands to a build log?
