@@ -24,9 +24,11 @@ type_tags:
 - utility
 deps:
   apt_get:
+  - name: openjdk
   - name: unzip
   - name: wget
   brew:
+  - name: openjdk
   - name: unzip
   - name: wget
 is_requires_admin_user: false
