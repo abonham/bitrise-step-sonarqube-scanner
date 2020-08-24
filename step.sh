@@ -12,14 +12,11 @@ if [[ ! -z ${scanner_properties} ]]; then
     echo "" >> sonar-project.properties
   fi
   echo "${scanner_properties}" >> sonar-project.properties
-  if [[ "$PR" == "true " ]]; then
-  echo "sonar.pullrequest.base=$BITRISEIO_PULL_REQUEST_HEAD_BRANCH" >> sonar-project.properties
-  echo "sonar.pullrequest.branch=$BITRISEIO_PULL_REQUEST_MERGE_BRANCH" >> sonar-project.properties
-  echo "sonar.pullrequest.key=$BITRISE_PULL_REQUEST" >> sonar-project.properties
-  echo "sonar.pullrequest.provider=bitbucketcloud" >> sonar-project.properties
-  echo "sonar.pullrequest.bitbucketcloud.repository=$pr_owner" >> sonar-project.properties
-  echo "sonar.pullrequest.bitbucketcloud.owner=$pr_repository" >> sonar-project.properties
-  fi
+fi
+
+if [[ ! -z ${pr_scanner_properties} ]]; then
+    echo "" >> sonar-project.properties
+    echo "${pr_scanner_properties}" >> sonar-project.properties
 fi
 
 echo "Using properties from file"
