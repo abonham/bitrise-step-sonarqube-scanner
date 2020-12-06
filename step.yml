@@ -24,7 +24,7 @@ type_tags:
 - utility
 deps:
   apt_get:
-  - name: openjdk
+  - name: openjdk@11
   - name: unzip
   - name: wget
   brew:
