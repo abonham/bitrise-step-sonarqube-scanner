@@ -5,18 +5,18 @@ if [[ "${is_debug}" == "true" ]]; then
   set -x
 fi
 
-
-if [[ ! -z ${scanner_properties} ]]; then
+if [[ ! -z ${pr_scanner_properties} ]]; then
+  if [[ -e sonar-project.properties ]]; then
+    echo -e "\e[34mBoth sonar-project.properties file and step PR properties are provided. Appending properties to the file.\e[0m"
+    echo "" >> sonar-project.properties
+  fi
+    echo "${pr_scanner_properties}" >> sonar-project.properties
+elif [[ ! -z ${scanner_properties} ]]; then
   if [[ -e sonar-project.properties ]]; then
     echo -e "\e[34mBoth sonar-project.properties file and step properties are provided. Appending properties to the file.\e[0m"
     echo "" >> sonar-project.properties
   fi
   echo "${scanner_properties}" >> sonar-project.properties
-fi
-
-if [[ ! -z ${pr_scanner_properties} ]]; then
-    echo "" >> sonar-project.properties
-    echo "${pr_scanner_properties}" >> sonar-project.properties
 fi
 
 echo "Using properties from file"
